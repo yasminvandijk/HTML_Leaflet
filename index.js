@@ -26,8 +26,12 @@ L.marker([52.074920, 5.094895]).bindPopup("Winkelcentrum").addTo(markers);
 
 // image overlay
 const rasters = L.layerGroup();
-const imageOverlay = L.imageOverlay("raster.png", 
+L.imageOverlay("raster.png", 
     [[52.01060406995427, 4.964806591002272], [52.173101598696235, 5.284876856796967]],
+    { opacity: 0.5 })
+    .addTo(rasters);
+L.imageOverlay("raster2.png",
+    [[52.31071025282671, 4.77836407855938], [52.43709988900439, 4.996625693314826]],
     { opacity: 0.5 })
     .addTo(rasters);
 
