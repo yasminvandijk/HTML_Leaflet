@@ -44,3 +44,15 @@ var overlays = {
     "rasters": rasters
 };
 L.control.layers(baseLayers, overlays).addTo(map);
+
+
+
+// show popup with latitude, longitude coordinates on map clicks
+map.on('click', e => {
+    if (e.latlng) {
+        L.popup()
+        .setLatLng(e.latlng)
+        .setContent(`<p>${e.latlng.lat}, ${e.latlng.lng}</p>`)
+        .openOn(map);
+    }
+});
