@@ -9,7 +9,26 @@ const tilesAttribution = 'Tiles courtesy of <a href="http://openstreetmap.se/">O
 // create the leaflet map and add map tiles
 const map = L.map('map').setView(startLocation, startZoom);
 
-L.tileLayer(tilesUrl, {
+const tileLayer = L.tileLayer(tilesUrl, {
     attribution: tilesAttribution,
     maxZoom: 18
 }).addTo(map);
+
+
+
+// marker layer
+const markers = L.layerGroup();
+L.marker(startLocation).addTo(markers);
+L.marker([52.084836, 5.173292]).addTo(markers);
+L.marker([52.092868, 5.112993]).addTo(markers);
+L.marker([52.094761, 5.123672]).addTo(markers);
+L.marker([52.074920, 5.094895]).addTo(markers);
+
+// control for toggling overlays on map
+var baseLayers = {
+    "map tiles": tileLayer
+};
+var overlays = {
+    "markers": markers
+};
+L.control.layers(baseLayers, overlays).addTo(map);
