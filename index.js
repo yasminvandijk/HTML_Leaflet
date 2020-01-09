@@ -35,13 +35,26 @@ L.imageOverlay("raster2.png",
     { opacity: 0.5 })
     .addTo(rasters);
 
+
+// current location marker layer
+const currentLocation = L.layerGroup().addTo(map);
+// subscribe to location updates
+if (window.navigator.geolocation) {
+    window.navigator.geolocation.watchPosition(position => {
+        currentLocation.clearLayers();
+        L.marker([position.coords.latitude, position.coords.longitude]).addTo(currentLocation);
+    });
+}
+
+
 // control for toggling overlays on map
 var baseLayers = {
     "map tiles": tileLayer
 };
 var overlays = {
     "markers": markers,
-    "rasters": rasters
+    "rasters": rasters,
+    "my location": currentLocation
 };
 L.control.layers(baseLayers, overlays).addTo(map);
 
