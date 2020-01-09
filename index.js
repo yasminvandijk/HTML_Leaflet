@@ -24,11 +24,19 @@ L.marker([52.092868, 5.112993]).bindPopup("Tivoli").addTo(markers);
 L.marker([52.094761, 5.123672]).bindPopup("Bibliotheek").addTo(markers);
 L.marker([52.074920, 5.094895]).bindPopup("Winkelcentrum").addTo(markers);
 
+// image overlay
+const rasters = L.layerGroup();
+const imageOverlay = L.imageOverlay("raster.png", 
+    [[52.01060406995427, 4.964806591002272], [52.173101598696235, 5.284876856796967]],
+    { opacity: 0.5 })
+    .addTo(rasters);
+
 // control for toggling overlays on map
 var baseLayers = {
     "map tiles": tileLayer
 };
 var overlays = {
-    "markers": markers
+    "markers": markers,
+    "rasters": rasters
 };
 L.control.layers(baseLayers, overlays).addTo(map);
