@@ -18,11 +18,11 @@ const tileLayer = L.tileLayer(tilesUrl, {
 
 // marker layer
 const markers = L.layerGroup();
-L.marker(startLocation).addTo(markers);
-L.marker([52.084836, 5.173292]).addTo(markers);
-L.marker([52.092868, 5.112993]).addTo(markers);
-L.marker([52.094761, 5.123672]).addTo(markers);
-L.marker([52.074920, 5.094895]).addTo(markers);
+L.marker(startLocation).bindPopup("Utrecht Centraal").addTo(markers);
+L.marker([52.084836, 5.173292]).bindPopup("Utrecht Science Park").addTo(markers);
+L.marker([52.092868, 5.112993]).bindPopup("Tivoli").addTo(markers);
+L.marker([52.094761, 5.123672]).bindPopup("Bibliotheek").addTo(markers);
+L.marker([52.074920, 5.094895]).bindPopup("Winkelcentrum").addTo(markers);
 
 // control for toggling overlays on map
 var baseLayers = {
